@@ -1,0 +1,16 @@
+eclipse.preferences.version=1
+org.eclipse.jdt.core.classpathVariable.ECLIPSE_HOME=/Users/feliciafay/FeliciaAll/3DevelopmentIDE/EE_eclipse
+org.eclipse.jdt.core.classpathVariable.JRE_LIB=/Library/Java/JavaVirtualMachines/jdk1.7.0_75.jdk/Contents/Home/jre/lib/rt.jar
+org.eclipse.jdt.core.classpathVariable.JRE_SRC=/Library/Java/JavaVirtualMachines/jdk1.7.0_75.jdk/Contents/Home/src.zip
+org.eclipse.jdt.core.classpathVariable.JRE_SRCROOT=src
+org.eclipse.jdt.core.classpathVariable.JUNIT_HOME=/Users/feliciafay/FeliciaAll/3DevelopmentIDE/EE_eclipse/plugins/org.junit_4.11.0.v201303080030/
+org.eclipse.jdt.core.classpathVariable.M2_REPO=/Users/feliciafay/.m2/repository
+org.eclipse.jdt.core.codeComplete.visibilityCheck=enabled
+org.eclipse.jdt.core.compiler.codegen.inlineJsrBytecode=enabled
+org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.7
+org.eclipse.jdt.core.compiler.compliance=1.7
+org.eclipse.jdt.core.compiler.problem.assertIdentifier=error
+org.eclipse.jdt.core.compiler.problem.enumIdentifier=error
+org.eclipse.jdt.core.compiler.source=1.7
+org.eclipse.jdt.core.userLibrary.eclipseLink=<?xml version\="1.0" encoding\="UTF-8"?>\n<userlibrary systemlibrary\="false" version\="2">\n\t<archive path\="/Users/feliciafay/FeliciaAll/3DevelopmentIDE/JavaPersistentAPI/eclipselink/jlib/eclipselink.jar"/>\n\t<archive path\="/Users/feliciafay/FeliciaAll/3DevelopmentIDE/JavaPersistentAPI/eclipselink/jlib/jpa/javax.persistence_2.1.0.v201304241213.jar"/>\n</userlibrary>\n
+org.eclipse.jdt.core.userLibrary.mysql-jdbc=<?xml version\="1.0" encoding\="UTF-8"?>\n<userlibrary systemlibrary\="false" version\="2">\n\t<archive path\="/Users/feliciafay/FeliciaAll/3DevelopmentIDE/JavaPersistentAPI/mysql-connector-java-5.1.35/mysql-connector-java-5.1.35-bin.jar"/>\n</userlibrary>\n

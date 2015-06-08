@@ -1,0 +1,38 @@
+package second_mvc;
+
+import javax.swing.table.*; 
+import javax.swing.event.*;
+
+/**
+*
+* @author rgrover
+*/
+public class CourseListTableModel extends AbstractTableModel {
+	private String[] columnNames = {"course name", "course number", "enrollment", "start date", "end date"};
+	private String[][] data = {
+			{"Object Oriented Programming", "COEN 275", "39", "31-3-2014", "13-6-2014" },
+			{"Real Time Systems", "COEN 120", "16", "31-3-2014", "13-6-￼2014"}	
+			{"Logic Design", "ELEN 21", "40", "31-3-2014", "13-6-2014"}, };
+	
+	public int getRowCount() { 
+		return data.length;
+	}
+	public int getColumnCount() { 
+		return columnNames.length;
+	}
+	public Object getValueAt(int row, int col) { 
+		return data[row][col];
+	}
+	public boolean isCellEditable(int rowIndex, int colIndex) { 
+		return false;
+	}
+	public Class<?> getColumnClass(int col) { 
+		return getValueAt(0, col).getClass();
+	}
+	public String getColumnName(int col) {
+		return columnNames[col];
+	}
+	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+		data[rowIndex][columnIndex] = (String) aValue; 
+	}
+}
