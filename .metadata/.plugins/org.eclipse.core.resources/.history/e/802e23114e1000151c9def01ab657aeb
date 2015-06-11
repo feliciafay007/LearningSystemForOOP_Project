@@ -1,0 +1,110 @@
+package test1;
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
+@Entity(name = "simpleresource")
+public class Simpleresource implements Serializable {
+	  //进行严格匹配
+	  @Column(name = "resource_name")
+	  private String resource_name;
+	  
+	  
+	  //int型auto increment  id 不知道这里这样写对不对
+	  //是不是顺序要提前
+	  @Id
+	  @GeneratedValue(strategy = GenerationType.TABLE)
+	  @Column
+	  private int id;
+	  
+	  @Column
+	  private int resource_path;
+	  
+	  public String getResource_name() {
+	    return resource_name;
+	  }
+
+	  public void setResource_name(String name) {
+	    this.resource_name = name;
+	  }
+
+	  public String getResource_path() {
+	    return resource_path;
+	  }
+
+	  public void setResource_path(String num) {
+	    this.resource_path = num;
+	  }
+	  	   
+	   // return number of columns in the table
+	   public int getNumberOfColumns() {
+		   return 4;
+	   }
+	   
+	   // return the data in column i
+	   public String getColumnData(int i) throws Exception {
+		   if (i == 0)
+			   return getCourseName();
+		   else if (i == 1)
+			   return getCourseNumber();
+		   else if (i == 2) 
+			   return Integer.toString(getEnrollment());
+		   else if (i == 3)
+			   return getStartDate();
+		   else if (i == 4)
+			   return getEndDate();
+		   else
+			   throw new Exception("Error: invalid column index in courselist table");    
+	   }
+	   
+	   // return the name of column i
+	   public String getColumnName(int i) throws Exception {
+		   String colName = null;
+		   if (i == 0) 
+			   colName = "course_name";
+		   else if (i == 1)
+			   colName = "course_number";
+		   else if (i == 2)
+			   colName = "enrollment";
+		   else if (i == 3)
+			   colName = "start_date";
+		   else if (i == 4)
+			   colName = "end_date";
+		   else 
+			   throw new Exception("Access to invalid column number in courselist table");
+		   
+		   return colName;
+	   }
+	   
+	   // set data column i to value
+	   public void setColumnData(int i, Object value) throws Exception {
+		   if (i == 0) 
+			   course_name = (String) value;
+		   else if (i == 1) 
+			   course_number = (String) value;
+		   else if (i == 2) 
+			   enrollment =  Integer.parseInt((String) value);
+		   else if (i == 3)
+			   start_date = (String) value;
+		   else if (i == 4)
+			  end_date = (String) value;
+		   else
+			   throw new Exception("Error: invalid column index in courselist table");    
+	   }
+	   
+	  @Override
+	  public String toString() {
+	    return "CourseList [Course Name =" + course_name + ", "
+	    	    + " Course Number =" + course_number + ","
+	    	    + " Enrollment =" + enrollment + ","
+	    	    + " Start Date =" + start_date + ","
+	    	    + " End Date =" + end_date + ","
+	        + "]";
+	  }
+
+
+}

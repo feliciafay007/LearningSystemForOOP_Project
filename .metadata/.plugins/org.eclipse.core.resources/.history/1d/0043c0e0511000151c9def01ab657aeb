@@ -1,0 +1,97 @@
+package test1;
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
+@Entity(name = "simpleresource")
+public class Simpleresource implements Serializable {
+	  //int型auto increment  id 不知道这里这样写对不对, 顺序是否对? 是否要写括号(name = "id")
+	  @Id
+	  @GeneratedValue(strategy = GenerationType.TABLE)
+	  @Column(name = "id")
+	  private int id;
+
+	  
+	  @Column
+	  private String resource_name;
+	  
+	  
+	  @Column
+	  private String resource_path;
+	  
+	  public int getId() {
+		return this.id;  
+	  }
+	  
+	  public String getResource_name() {
+	    return this.resource_name;
+	  }
+
+	  public void setResource_name(String name) {
+	    this.resource_name = name;
+	  }
+
+	  public String getResource_path() {
+	    return this.resource_path;
+	  }
+
+	  public void setResource_path(String p) {
+	    this.resource_path = p;
+	  }
+	  	   
+	   public int getNumberOfColumns() {
+		   return 3;
+	   }
+	   
+	   // return the data in column i
+	   public String getColumnData(int i) throws Exception {
+		   if (i == 0)
+			   return Integer.toString(getId());
+		   else if (i == 1)
+			   return getResource_name();
+		   else if (i == 2) 
+			   return getResource_path();
+		   else  
+			   throw new Exception("Error: invalid column index in simpleresource table");    
+	   }
+	   
+	   // return the name of column i
+	   public String getColumnName(int i) throws Exception {
+		   String colName = null;
+		   if (i == 0) 
+			   colName = "id";
+		   else if (i == 1)
+			   colName = "resource_name";
+		   else if (i == 2)
+			   colName = "resource_path";
+		   else 
+			   throw new Exception("Access to invalid column number in simpleresource table");
+		   return colName;
+	   }
+	   
+	   // set data column i to value
+	   public void setColumnData(int i, Object value) throws Exception {
+		   if (i == 1) 
+			   course_number = (String) value;
+		   else if (i == 2) 
+			   enrollment =  Integer.parseInt((String) value);
+		   else
+			   throw new Exception("Error: invalid column index in courselist table");    
+	   }
+	   
+	  @Override
+	  public String toString() {
+	    return "CourseList [Course Name =" + course_name + ", "
+	    	    + " Course Number =" + course_number + ","
+	    	    + " Enrollment =" + enrollment + ","
+	    	    + " Start Date =" + start_date + ","
+	    	    + " End Date =" + end_date + ","
+	        + "]";
+	  }
+
+
+}
