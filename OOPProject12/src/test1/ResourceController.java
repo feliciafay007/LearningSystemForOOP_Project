@@ -10,10 +10,12 @@ import javax.swing.table.TableModel;
 
 public class ResourceController implements ListSelectionListener, TableModelListener{
 	private ResourceTableModel tableModel;
-	private ResourceProcessTest1 gui;
+	//private ResourceProcessTest1 gui;
+	private ResourceProcessor gui;
 	private ResourceService resourceService;
 	
-	public ResourceController(ResourceProcessTest1 gui) {
+	//public ResourceController(ResourceProcessTest1 gui) {
+	public ResourceController(ResourceProcessor gui) {
 		this.gui = gui;   
     	tableModel = new ResourceTableModel(); 
     	tableModel.addTableModelListener(this);
