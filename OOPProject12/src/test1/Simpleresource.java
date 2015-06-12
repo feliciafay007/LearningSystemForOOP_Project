@@ -95,4 +95,13 @@ public class Simpleresource implements Serializable {
 	    	    + " resource_path = " + resource_path+ 
 	    	    "]";
 	  }
+	  
+	  public String getFilePath () {
+		  try {
+			  return this.getColumnData(2);
+		  } catch (Exception e) {
+			  System.out.println("getFilePath()" + e.getMessage());
+		  }
+		  return "";
+	  }
 }

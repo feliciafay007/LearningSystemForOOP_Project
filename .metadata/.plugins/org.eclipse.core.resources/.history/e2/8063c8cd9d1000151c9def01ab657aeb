@@ -1,0 +1,37 @@
+import java.applet.Applet;
+import java.applet.AudioClip;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+
+class AudioTest extends JFrame implements ActionListener
+{
+	  JButton btn = new JButton("Play Sound");
+	  File wavFile = new File("/Users/feliciafay/FeliciaAll/0SantaClaraU/1_2015SpringOOP/Project/Resource/Adding_and_Subtracting/subtracting16.wav");
+	  AudioClip sound;
+	  public AudioTest()
+	  {
+		    setSize(300,100);
+		    setLocation(400,300);
+		    setDefaultCloseOperation(EXIT_ON_CLOSE);
+		    JPanel jp = new JPanel();
+		    btn.addActionListener(this);
+		    jp.add(btn);
+		    getContentPane().add(jp);
+		    pack();
+	    try{
+	    	sound = Applet.newAudioClip(wavFile.toURL());
+	    }catch(Exception e){
+	    	e.printStackTrace();
+	    }
+	  }
+  public void actionPerformed(ActionEvent ae){sound.play();}
+  public static void main(String args[]){
+	  new AudioTest().setVisible(true);
+	  }
+}

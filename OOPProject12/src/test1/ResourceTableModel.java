@@ -28,6 +28,10 @@ public class ResourceTableModel extends AbstractTableModel {
 	    numrows = simpleResourceList.size();
 	    numcols = simpleResource.getNumberOfColumns();
     }
+	  
+	public ResourceService getResourceService() {
+		return resourceService;
+	}
 
 	 // returns a count of the number of rows
 	 public int getRowCount() {

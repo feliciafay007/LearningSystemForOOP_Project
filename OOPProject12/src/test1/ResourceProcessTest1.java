@@ -1,9 +1,19 @@
 package test1;
 
 import java.awt.BorderLayout;
-
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
+
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -31,7 +41,8 @@ public class ResourceProcessTest1 extends javax.swing.JFrame {
          */
         //addJTable(); //会显示表格先注释掉
     }
-
+    
+    //用不上
     public void addJTable() {
 		// add the data and column names to a JTable  
 	    jtable1 = new JTable(resourceController.getTableModel());
@@ -52,7 +63,7 @@ public class ResourceProcessTest1 extends javax.swing.JFrame {
     /**
      * @Felicia set TextField
      */    
-    public void setSecondLable(String value) {
+    public void setSecondLabel(String value) {
     	jLabel2.setText(value);
     }
     
@@ -64,10 +75,33 @@ public class ResourceProcessTest1 extends javax.swing.JFrame {
 //    	array[3] = startDateTextField.getText();
 //    	array[4] = endDateTextField.getText();
 //   	    courseListTableController.addRow( array);
-    	setSecondLable("123");
+    	
+//    	test1
+//    	String current = resourceController.getRecord("202");
+//    	//setSecondLabel("123");
+//    	setSecondLabel(current);
+    	
+    	//test2
+    	String currentPath = resourceController.getFilePath("202");
+    	try {
+    		setSecondLabel(currentPath);
+    		BufferedImage wPic = ImageIO.read(new File(currentPath));
+    		//jLabel2= new JLabel(new ImageIcon(wPic));
+    		jLabel2.setIcon(new ImageIcon(wPic));
+    		playVideo();
+    	} catch (Exception e) {
+    		System.out.println(e.getMessage());
+    	}
     }
     
- 
+    private void playVideo() {
+    	//TwinkleTwinkleLittleStar.mp4
+    	//TwinkleTwinkleLittleStar.avi
+        Player player = Manager.createPlayer( file.toURL() );
+        player.addControllerListener( new EventHandler() );
+        player.start();  // start player
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

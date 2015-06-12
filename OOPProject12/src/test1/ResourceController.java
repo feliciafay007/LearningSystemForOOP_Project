@@ -11,12 +11,14 @@ import javax.swing.table.TableModel;
 public class ResourceController implements ListSelectionListener, TableModelListener{
 	private ResourceTableModel tableModel;
 	private ResourceProcessTest1 gui;
-	// @Felicia start copy
+	private ResourceService resourceService;
 	
 	public ResourceController(ResourceProcessTest1 gui) {
 		this.gui = gui;   
     	tableModel = new ResourceTableModel(); 
     	tableModel.addTableModelListener(this);
+    	//@Felicia 强制使用，不知道会不会出事儿->目前经测试安全
+    	resourceService = tableModel.getResourceService();
 	}
 	
 	
@@ -63,5 +65,17 @@ public class ResourceController implements ListSelectionListener, TableModelList
 		tableModel.addRow(array);			
 	}
 	
-	// @Felicia end copy
+	public String getRecord(String resID) {
+		Simpleresource simRes = resourceService.readRecord(resID);
+		return simRes.toString();
+	}
+	
+	public String getFileType(String resID) {
+		String type = "";
+		return type;
+	}
+	public String getFilePath(String resID) {
+		Simpleresource simRes = resourceService.readRecord(resID);
+		return simRes.getFilePath();
+	}
 }
