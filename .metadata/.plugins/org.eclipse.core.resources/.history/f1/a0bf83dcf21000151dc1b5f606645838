@@ -1,0 +1,87 @@
+package test1;
+
+
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.TableModel;
+
+public class ResourceController implements ListSelectionListener, TableModelListener{
+	private ResourceTableModel tableModel;
+	//private ResourceProcessTest1 gui;
+	private ResourceProcessor gui;
+	private ResourceService resourceService;
+	
+	//public ResourceController(ResourceProcessTest1 gui) {
+	public ResourceController(ResourceProcessor gui) {
+		this.gui = gui;   
+    	tableModel = new ResourceTableModel(); 
+    	tableModel.addTableModelListener(this);
+    	//@Felicia 强制使用，不知道会不会出事儿->目前经测试安全
+    	resourceService = tableModel.getResourceService();
+	}
+	
+	
+	// new code
+	public TableModel getTableModel() {
+		return tableModel;
+	}
+	
+	public void valueChanged(ListSelectionEvent e) {
+		ListSelectionModel selectModel = (ListSelectionModel) e.getSource();
+		int firstIndex = selectModel.getMinSelectionIndex();
+		
+		// read the data in each column using getValueAt and display it on corresponding textfield
+//		gui.setCourseNameTextField( (String) tableModel.getValueAt(firstIndex, 0));
+//		gui.setCourseNumberTextField( (String) tableModel.getValueAt(firstIndex, 1));
+//		gui.setEnrollmentTextField( (String) tableModel.getValueAt(firstIndex, 2));
+//		gui.setStartDateTextField( (String) tableModel.getValueAt(firstIndex, 3));
+//		gui.setEndDateTextField( (String) tableModel.getValueAt(firstIndex, 4));
+		
+	}
+	
+	public void tableChanged(TableModelEvent e)
+	{
+	   try {
+//	    	int firstIndex =  e.getFirstRow();
+//	    	
+//	        tableModel = new CourseListTableModel(tableModel.getList(), tableModel.getEntityManager());
+//	        tableModel.addTableModelListener(this);
+//	    	gui.updateTable();
+//	    
+//			gui.setCourseNameTextField( (String) tableModel.getValueAt(firstIndex, 0));
+//			gui.setCourseNumberTextField( (String) tableModel.getValueAt(firstIndex, 1));
+//			gui.setEnrollmentTextField( (String) tableModel.getValueAt(firstIndex, 2));
+//			gui.setStartDateTextField( (String) tableModel.getValueAt(firstIndex, 3));
+//			gui.setEndDateTextField( (String) tableModel.getValueAt(firstIndex, 4));
+	} catch(Exception exp) {
+		exp.getMessage();
+		exp.printStackTrace();
+	}
+}
+
+	
+	public void addRow(String[] array) {
+		tableModel.addRow(array);			
+	}
+	
+	public String getRecord(String resID) {
+		Simpleresource simRes = resourceService.readRecord(resID);
+		return simRes.toString();
+	}
+	
+	public String getFileType(String resID) {
+		String type = "";
+		return type;
+	}
+	public String getFilePath(String resID) {
+		Simpleresource simRes = resourceService.readRecord(resID);
+		return simRes.getFilePath();
+	}
+	
+	public list<Simpleresouce> getList() {
+		list<Simpleresource> list = resourceService.readAll();
+	}
+}

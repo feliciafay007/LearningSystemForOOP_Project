@@ -1,6 +1,8 @@
 package test1;
 
 
+import java.util.List;
+
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -79,5 +81,9 @@ public class ResourceController implements ListSelectionListener, TableModelList
 	public String getFilePath(String resID) {
 		Simpleresource simRes = resourceService.readRecord(resID);
 		return simRes.getFilePath();
+	}
+	
+	public List<Simpleresource> getList() {
+		return resourceService.readAll();
 	}
 }

@@ -3,6 +3,8 @@
 	<persistence-unit name="OOPProject12" transaction-type = "RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>test1.Simpleresource</class>
+        <class>test1.StudentInfo</class>
+        <class>test1.Progress</class>
         <properties>
             <property name = "javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/test1"/>
             <property name = "javax.persistence.jdbc.user" value="root"/>
