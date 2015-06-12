@@ -97,9 +97,9 @@ public class ResourceProcessTest1 extends javax.swing.JFrame {
     private void playVideo() {
     	//TwinkleTwinkleLittleStar.mp4
     	//TwinkleTwinkleLittleStar.avi
-        Player player = Manager.createPlayer( file.toURL() );
-        player.addControllerListener( new EventHandler() );
-        player.start();  // start player
+//        Player player = Manager.createPlayer( file.toURL() );
+//        player.addControllerListener( new EventHandler() );
+//        player.start();  // start player
     }
     
     /**

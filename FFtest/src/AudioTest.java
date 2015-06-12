@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 class AudioTest extends JFrame
 {
 	  JButton btn = new JButton("Play Sound");
-	  File wavFile = new File("/Users/feliciafay/FeliciaAll/0SantaClaraU/1_2015SpringOOP/Project/Resource/Adding_and_Subtracting/subtracting16.wav");
+	  File wavFile = new File("./resource/Adding_and_Subtracting/subtracting16.wav");
 	  AudioClip sound;
 	  Boolean loopStatus;
 	  public AudioTest()
