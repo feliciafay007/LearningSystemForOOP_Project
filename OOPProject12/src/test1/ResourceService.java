@@ -11,12 +11,30 @@ public class ResourceService {
 	 }
 	 
     // method to create a new record
-     public Simpleresource createRecord(String resourceID, String resourceName, String resourcePath) {
+     public Simpleresource createRecord(
+    		 String resourceID, 
+    		 String resourceMediatype, 
+    		 String questionPath,
+    		 String questionAudioPath,
+    		 String questionLargeCate,
+    		 String questionSmallCate,
+    		 String optionA,
+    		 String optionB,
+    		 String optionC,
+    		 String optionCorrect,
+    		 String difficultyLevel) {
     	Simpleresource  simRes = new Simpleresource ();
     	simRes.setResource_id(resourceID);
-    	simRes.setResource_name(resourceName);
-    	simRes.setResource_path(resourcePath);
- 	    manager.persist(simRes);
+    	simRes.setResource_mediatype(resourceMediatype);
+    	simRes.setQuestionPath(questionPath);
+    	simRes.setQuestionAudioPath(questionAudioPath);
+    	simRes.setQuestionLargeCate(questionLargeCate);
+    	simRes.setQuestionSmallCate(questionSmallCate);
+    	simRes.setOptionA(optionA);
+    	simRes.setOptionB(optionB);
+    	simRes.setOptionC(optionC);
+    	simRes.setDifficultyLevel(difficultyLevel);
+    	manager.persist(simRes);
  	    return simRes;
      }
     
@@ -34,11 +52,30 @@ public class ResourceService {
      }
      
     // method to update a record
-     public Simpleresource updateRecord(String resourceID, String resourceName, String resourcePath) {
+     public Simpleresource updateRecord(
+    		 String resourceID, 
+    		 String resourceMediatype, 
+    		 String questionPath,
+    		 String questionAudioPath,
+    		 String questionLargeCate,
+    		 String questionSmallCate,
+    		 String optionA,
+    		 String optionB,
+    		 String optionC,
+    		 String optionCorrect,
+    		 String difficultyLevel
+    		 ) {
     	 Simpleresource simRes = manager.find(Simpleresource.class, resourceID);
     	 if (simRes != null) {
-    	    	simRes.setResource_name(resourceName);
-    	    	simRes.setResource_path(resourcePath);
+    	    	simRes.setResource_mediatype(resourceMediatype);
+    	    	simRes.setQuestionPath(questionPath);
+    	    	simRes.setQuestionAudioPath(questionAudioPath);
+    	    	simRes.setQuestionLargeCate(questionLargeCate);
+    	    	simRes.setQuestionSmallCate(questionSmallCate);
+    	    	simRes.setOptionA(optionA);
+    	    	simRes.setOptionB(optionB);
+    	    	simRes.setOptionC(optionC);
+    	    	simRes.setDifficultyLevel(difficultyLevel);
     	 }
     	 return simRes;
      }

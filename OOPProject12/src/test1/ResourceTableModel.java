@@ -108,7 +108,11 @@ public class ResourceTableModel extends AbstractTableModel {
 			
 		 EntityTransaction userTransaction = manager.getTransaction();  
 			userTransaction.begin();
-			Simpleresource newRecord = resourceService.createRecord((String) array[0], (String) array[1], (String) array[2]); 
+			Simpleresource newRecord = resourceService.createRecord(
+					(String) array[0], (String) array[1], (String) array[2]
+					, (String)array[3], (String)array[4], (String)array[5]
+					, (String)array[6], (String)array[7], (String)array[8]
+					, (String)array[9], (String)array[10]); 
 			//resourceService.createCourse((String) array[0], (String) array[1], Integer.parseInt((String) array[2]), (String) array[3], (String) array[4]);
 			userTransaction.commit();
 			 

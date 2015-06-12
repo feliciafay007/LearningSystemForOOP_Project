@@ -1,7 +1,24 @@
 INDEX VERSION 1.126+/Users/feliciafay/FeliciaAll/0SantaClaraU/1_2015SpringOOP/COEN275JPA1/.metadata/.plugins/org.eclipse.jdt.core
+2427352903.index
+252863676.index
+1789284195.index
 3880399711.index
+3161353398.index
 112165729.index
+2044768101.index
 2824707192.index
+86852845.index
+3697685622.index
+177835100.index
+2931467479.index
+1496380476.index
+1271342938.index
+1448557195.index
+3449433182.index
 1393587075.index
+1556801987.index
+3326698961.index
 1219258983.index
+750223094.index
+1799156809.index
 1179909460.index
