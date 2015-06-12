@@ -63,8 +63,7 @@ public class  ProgressController implements ListSelectionListener, TableModelLis
 		exp.getMessage();
 		exp.printStackTrace();
 	}
-}
-
+	}
 	
 	public void addRow(String[] array) {
 		tableModel.addRow(array);			
@@ -73,21 +72,10 @@ public class  ProgressController implements ListSelectionListener, TableModelLis
 	public void updateRow(String[] array) {
 		tableModel.updateRow(array);			
 	}
-	
-	
+
 	
 	public void deleteRow(String[] array) {
 		tableModel.deleteRow(array);			
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 	
 }

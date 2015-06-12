@@ -1,6 +1,10 @@
 package test1;
 
-import java.awt.Image;
+import java.applet.Applet;
+import java.applet.AudioClip;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -22,7 +26,11 @@ public class ResourceProcessor extends javax.swing.JPanel {
 	private  String [] participants;
 	private int roundQuestionNumberEachPerson;
 	private int roundQuestionCounter;
+	private int participantNumber;
 	private List<Simpleresource> questionsList;
+	private String questionLargeCategory;
+	private String questionSmallCategory;
+	private Boolean  loopStatus = true;
     /**
      * Creates new form ResourceProcessor
      */
@@ -64,19 +72,19 @@ public class ResourceProcessor extends javax.swing.JPanel {
 	 		BufferedImage wPic = ImageIO.read(new File(currentPath));
 	 		//jLabel2= new JLabel(new ImageIcon(wPic));
 	 		jLabel2.setIcon(new ImageIcon(wPic));
-	 		playVideo();
+	 		//playVideo();
 	 	} catch (Exception e) {
 	 		System.out.println(e.getMessage());
 	 	}
 	 }
 
-	 private void playVideo() {
-	 	//TwinkleTwinkleLittleStar.mp4
-	 	//TwinkleTwinkleLittleStar.avi
-	//     Player player = Manager.createPlayer( file.toURL() );
-	//     player.addControllerListener( new EventHandler() );
-	//     player.start();  // start player
-	 }        
+//	 private void playVideo() {
+//	 	//TwinkleTwinkleLittleStar.mp4
+//	 	//TwinkleTwinkleLittleStar.avi
+//	     Player player = Manager.createPlayer( file.toURL() );
+//	     player.addControllerListener( new EventHandler() );
+//	     player.start();  // start player
+//	 }        
     
 	 private void showOneQuestion() {
 		 
@@ -84,19 +92,15 @@ public class ResourceProcessor extends javax.swing.JPanel {
 		 Simpleresource simRes = questionsList.get(0);
 		 String str =  simRes.getFilePath();
 		 //1. title
-		 
+		 jLableTitle.setText(questionLargeCategory +  " : " + questionSmallCategory);
 		 //2. progress
+		 jLabelProgress.setText("Here is " + participants[0] + ", " + participants[1] + ", " + participants[2]); 
 		 
 		 //3. jLabelStudentTerm
 		 jLabelStudentTerm.setText("Now it is " + turn + "'s turn...");
 		 
-		 //4. 
+		 //4. picture
 		 
-		 //需要先存入数据库， 不能两次调用getFilePath()，否则出问题，不知道为什么
-		 
-	     jLabelProgress.setText(str);
-		 
-		 //picture
 		 try {
 			 //Image img = ImageIO.read(getClass().getResource(str));
 			 BufferedImage buttonIcon = ImageIO.read(new File(str));
@@ -104,6 +108,13 @@ public class ResourceProcessor extends javax.swing.JPanel {
 		 } catch (IOException e) {
 			 e.printStackTrace();
 		 }
+		 
+//		 jButtonNext.addActionListener(new ActionListener() {
+//	            public void actionPerformed(ActionEvent e) {
+//	            	loopStatus = false;
+//					sound.stop();
+//	            }
+//		    });
 		 ++roundQuestionCounter; 
 	 }
 	 
@@ -115,13 +126,23 @@ public class ResourceProcessor extends javax.swing.JPanel {
      */
 	 
 	void initVariables(){
-        participants = new String [3];
+		participantNumber = 3;
+        participants = new String [participantNumber];
         participants[0] = "Rohan";
         participants[1] = "Jie";
         participants[2] = "Wenyi";
+        questionLargeCategory = "Math";
+        questionSmallCategory = "Add and Subtract";
         roundQuestionNumberEachPerson = 5;
         roundQuestionCounter = 0;
-        questionsList = resourceController.getList();
+        questionsList = resourceController.getList();        
+        jLabelProgress.setFont(new Font("Serif", Font.PLAIN, 20));
+        jLabelStudentTerm.setFont(new Font("Serif", Font.PLAIN, 24));
+        jLableTitle.setFont(new Font("Serif", Font.PLAIN, 14));
+        jLabel2.setText("");
+        jRadioButtonOpts1.setText("3");
+        jRadioButtonOpts2.setText("4");
+        jRadioButtonOpts3.setText("5");
 	}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
@@ -155,7 +176,7 @@ public class ResourceProcessor extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(170, 170, 170)
-                .addComponent(jButtonQuestions, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonQuestions, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(178, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -266,7 +287,20 @@ public class ResourceProcessor extends javax.swing.JPanel {
     	++roundQuestionCounter;
     	roundQuestionCounter = Math.min(roundQuestionCounter, roundQuestionNumberEachPerson);
     }              
-
+    
+    private void jButtonQuestionsActionPerformed(java.awt.event.ActionEvent evt) {
+		 // 5. audio
+		 //File wavFile = new File()
+		 File wavFile = new File("./resource/Adding_and_Subtracting/adding19.wav");
+		 AudioClip sound;
+		 try{
+				sound = Applet.newAudioClip(wavFile.toURL());
+				sound.loop();
+				sound.play();
+			}catch(Exception e){
+		    	e.printStackTrace();
+			}	
+    }
 
     // Variables declaration - do not modify                     
     private javax.swing.ButtonGroup buttonGroup1;
